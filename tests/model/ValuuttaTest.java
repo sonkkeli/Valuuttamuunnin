@@ -15,16 +15,12 @@ public class ValuuttaTest {
 
 	@Before
 	public void setUp() {
-		valuutta = new Valuutta("Euroopan euro", 1.0);
+		valuutta = new Valuutta("EUR", 1.0, "Euroopan euro");
 	}
 
 	@Test
-	public void testValuutta() {
-		try {
-			 valuutta = new Valuutta("Euroopan euro", 1.0);
-		} catch (Exception e) {
-			fail("Valuutta-olion luonti ei onnistunut");
-		}
+	public void testGetTunnus() {
+		assertEquals("Valuutan tunnus väärin", "EUR", valuutta.getTunnus());
 	}
 
 	@Test
@@ -38,9 +34,20 @@ public class ValuuttaTest {
 	}
 
 	@Test
-	public void testSetVaihtokurssi() {
-		valuutta.setVaihtokurssi(1.01);
-		assertEquals("Valuutan vaihtokurssin asetus väärin", 1.01, valuutta.getVaihtokurssi(), DELTA);
+	public void testSetTunnus() {
+		valuutta.setTunnus("EURO");
+		assertEquals("Valuutan tunnuksen asetus ei onnistunut", "EURO", valuutta.getTunnus());
 	}
 
+	@Test
+	public void testSetNimi() {
+		valuutta.setNimi("Euroopan valuutta");
+		assertEquals("Valuutan nimen asetus ei onnistunut", "Euroopan valuutta", valuutta.getNimi());
+	}
+
+	@Test
+	public void testSetVaihtokurssi() {
+		valuutta.setVaihtokurssi(1.01);
+		assertEquals("Valuutan vaihtokurssin päivitys väärin", 1.01, valuutta.getVaihtokurssi(), DELTA);
+	}
 }

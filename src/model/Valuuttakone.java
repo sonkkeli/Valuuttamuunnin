@@ -1,16 +1,13 @@
 package model;
 /**
- * @author sonjaml 20.2.2019
+ * @author sonjaml 2.3.2019
  */
 public class Valuuttakone implements Valuuttakone_IF {
 	private Valuutta[] valuutat;
+	private static ValuuttaAccessObject valuuttaDAO = new ValuuttaAccessObject();
 	
 	public Valuuttakone() {
-		Valuutta euro = new Valuutta("Euroopan euro", 1.0);
-		Valuutta ruotsinKruunu = new Valuutta("Ruotsin kruunu", 9.4780);
-		Valuutta norjanKruunu = new Valuutta("Norjan kruunu", 8.9018);
-		Valuutta usd = new Valuutta("Yhdysvaltain dollari", 1.0629);
-		this.valuutat = new Valuutta[] {euro, ruotsinKruunu, norjanKruunu, usd};
+		this.valuutat = valuuttaDAO.readValuutat();
 	}
 
 	@Override

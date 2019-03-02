@@ -28,6 +28,7 @@ import model.Valuuttakone;
 import model.Valuuttakone_IF;
 /**
  * @author sonjaml 20.2.2019
+ * Valuuttamuunnin käynnistetään tämän luokan avulla.
  */
 public class ValuuttakoneenGUI extends Application implements ValuuttakoneenGUI_IF {
 	private String[] valuutat;
